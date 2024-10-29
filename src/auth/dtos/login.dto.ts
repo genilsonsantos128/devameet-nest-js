@@ -1,12 +1,10 @@
-import { IsEmail} from "class-validator";
-import {IsNotEmpty} from "class-validator/types/decorator/decorators;
-import { messagesHelper } from "../helpers/messages.helper";
+import { IsEmail, IsNotEmpty } from 'class-validator';
+import { messagesHelper } from '../helpers/messages.helper';
 
+export class LoginDto {
+  @IsEmail({}, { message: messagesHelper.AUTH_LOGIN_NOT_FOUND })
+  Login: string;
 
-export class loginDto {
-    @IsEmail({}, { messages: messagesHelper.AUTH_LOGIN_NOT_FOUND })
-    login: string;
-
-    @IsNotEmpty({ messages: messagesHelper.AUTH_PASSWORD_NOT_FOUND});
-    password: string;
+  @IsNotEmpty({ message: messagesHelper.AUTH_PASSWOORD_NOT_FOUND })
+  password: string;
 }
