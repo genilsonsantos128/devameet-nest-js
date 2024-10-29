@@ -4,13 +4,13 @@ import { dot } from "node:test/reporters";
 import { LoginDto } from "./dtos/login.dto";
 
 @Controller("auth")
-export class AutoController{
+export class AuthController{
   constructor(private readonly authoService: authService){} 
 
     @Post('login')
     @HttpCode(HttpStatus.OK)
-    login(dot:LoginDto){
-        
+    login(@Body() dot:LoginDto){
+        return this.authoService.login(dot);
     }
 
 }
